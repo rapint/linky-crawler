@@ -1,0 +1,58 @@
+{
+    "name": "bankin-crawler",
+    "version": "0.1.0",
+    "description": "",
+    "main": "app.js",
+    "engines": {
+        "node": ">=11.0.0",
+        "npm": ">=6.0.0"
+    },
+    "scripts": {
+        "codecov": "./node_modules/.bin/codecov",
+        "start": "nodemon app.js",
+        "format": "./node_modules/.bin/prettier --write",
+        "format-all": "./node_modules/.bin/prettier --write **/*.js",
+        "format-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
+        "lint": "lynt",
+        "snyk-protect": "snyk protect",
+        "prepare": "npm run snyk-protect",
+        "test": "npm run format-all && npm run lint && jest --colors --coverage",
+        "test-file": "jest --colors --coverage"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm test"
+        }
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@bokub/linky": "^0.2.1",
+        "axios": "^0.18.0",
+        "console.table": "^0.10.0",
+        "dotenv": "^7.0.0",
+        "express": "^4.16.4",
+        "forest-express-mongoose": "^2.14.0",
+        "fs": "^0.0.1-security",
+        "lodash": "^4.17.11",
+        "moment": "^2.24.0",
+        "mongodb": "^3.1.13",
+        "mongoose": "^5.2.13",
+        "mongoose-paginate": "^5.0.3",
+        "querystring": "^0.2.0",
+        "signale": "^1.2.1",
+        "snyk": "^1.143.1"
+    },
+    "devDependencies": {
+        "axios-mock-adapter": "^1.16.0",
+        "codecov": "^3.1.0",
+        "husky": "^1.0.0-rc.8",
+        "jest": "^24.1.0",
+        "lynt": "^0.5.5",
+        "mongodb-memory-server": "^4.0.1",
+        "nodemon": "^1.18.4",
+        "onchange": "^5.2.0",
+        "prettier": "^1.14.2"
+    },
+    "snyk": true
+}

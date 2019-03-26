@@ -1,0 +1,23 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.12.0
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  'npm:lodash:20180130':
+    - forest-express-mongoose > forest-express > lodash:
+        reason: None given
+        expires: '2019-02-09T09:31:25.218Z'
+    - forest-express-mongoose > lodash:
+        reason: None given
+        expires: '2019-02-09T09:31:25.218Z'
+  'npm:superagent:20181108':
+    - forest-express-mongoose > forest-express > superagent:
+        reason: None given
+        expires: '2019-02-09T09:31:25.218Z'
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:lodash:20180130':
+    - forest-express-mongoose > forest-express > jsonapi-serializer > lodash:
+        patched: '2018-09-16T20:07:37.803Z'
+  'npm:moment:20170905':
+    - forest-express-mongoose > moment:
+        patched: '2018-09-16T20:07:37.803Z'

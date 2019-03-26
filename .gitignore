@@ -1,0 +1,8 @@
+.DS_Store
+.env
+coverage
+data
+node_modules
+package-lock.json
+pierrick.crt
+pierrick.key
