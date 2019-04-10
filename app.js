@@ -1,7 +1,6 @@
 require('dotenv').config({ path: '.env' });
 
 const cors = require('cors');
-const dbHost = process.env.MONGODB_HOST;
 const express = require('express');
 const fs = require('fs');
 const mongodb = require('mongodb');
@@ -32,9 +31,9 @@ if (process.env.ENV === 'production') {
             },
             app
         )
-        .listen(3002);
+        .listen(3003);
 } else {
-    app.listen(3002);
+    app.listen(3003);
 }
 
 app.options('*', cors());
@@ -49,18 +48,8 @@ app.use(
 );
 
 MongoClient.connect(
-    dbHost,
-    process.env.ENV === 'production'
-        ? {
-              sslValidate: true,
-              sslCA: [
-                  fs.readFileSync(process.env.MONGO_SSL_CLIENT_CERTIFICATE)
-              ],
-              sslKey: fs.readFileSync(process.env.MONGO_SSL_PRIVATE_KEY),
-              sslCert: fs.readFileSync(process.env.MONGO_SSL_CERTIFICATE),
-              useNewUrlParser: true
-          }
-        : { useNewUrlParser: true },
+    process.env.MONGODB_HOST,
+    { useNewUrlParser: true },
     (err, client) => {
         if (err) throw err;
 
